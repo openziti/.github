@@ -1,6 +1,6 @@
 # Introduction
 
-**OpenZiti** [![OpenZiti github stars badge](https://img.shields.io/github/stars/openziti/ziti?style=flat)] is a free and open source project focused on bringing zero trust to any application. The project provides all the pieces required to implement or integrate zero trust into your solutions.
+**OpenZiti** [![OpenZiti github stars badge](https://img.shields.io/github/stars/openziti/ziti?style=flat)](https://github.com/openziti/ziti) is a free and open source project focused on bringing zero trust to any application. The project provides all the pieces required to implement or integrate zero trust into your solutions.
 
 * An overlay network
 * Tunneling Applications for all operating systems
