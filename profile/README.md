@@ -1,12 +1,12 @@
 # Introduction
 
-**OpenZiti** is a free and open source project focused on bringing Zero Trust to any application. The project provides all the pieces required to implement or integrate Zero Trust into your solutions.
+**OpenZiti** is a free and open source project focused on bringing zero trust to any application. The project provides all the pieces required to implement or integrate zero trust into your solutions.
 
 * An overlay network
 * Tunneling Applications for all operating systems
-* Numerous SDKs making it easy to add Zero Trust concepts directly into your application
+* Numerous SDKs making it easy to add zero trust concepts directly into your application
 
-Ziti makes it easy to embed Zero Trust, programmable networking directly into your app. With Ziti you can have Zero Trust, high performance networking on any Internet connection, without VPNs!
+Ziti makes it easy to embed zero trust, programmable networking directly into your app. With Ziti you can have zero trust, high performance networking on any Internet connection, without VPNs!
 
 The Ziti Network (Ziti) is composed of the following building
 blocks: Ziti Controller, Ziti Router, Ziti Clients. These
