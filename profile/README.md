@@ -16,7 +16,7 @@ type of network is considered an overlay network because it
 provides secure connectivity on top – or “overlaying” – existing
 networking infrastructure.
 
-![image](https://openziti.github.io/images/ziti-overview.svg)
+![image](https://raw.githubusercontent.com/openziti/ziti-doc/main/docusaurus/static/img/ziti-overview.svg)
 
 ## Quick Reference
 * [Main Documentation Site](https://openziti.github.io/ziti/overview.html)
