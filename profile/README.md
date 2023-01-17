@@ -6,10 +6,10 @@
 * Tunneling Applications for all operating systems
 * Numerous SDKs making it easy to add zero trust concepts directly into your application
 
-Ziti makes it easy to embed zero trust, programmable networking directly into your app. With Ziti you can have zero trust, high performance networking on any Internet connection, without VPNs!
+OpenZiti makes it easy to embed zero trust, programmable networking directly into your app. With OpenZiti you can have zero trust, high performance networking on any Internet connection, without VPNs!
 
-The Ziti Network (Ziti) is composed of the following building
-blocks: Ziti Controller, Ziti Router, Ziti Clients. These
+The OpenZiti Network (Ziti) is composed of the following building
+blocks: OpenZiti Controller, OpenZiti Router, OpenZiti Clients. These
 components are used in conjunction to provide secure
 connectivity between two points such as a client to a server. This
 type of network is considered an overlay network because it
