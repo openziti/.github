@@ -19,6 +19,6 @@ networking infrastructure.
 ![image](https://raw.githubusercontent.com/openziti/ziti-doc/main/docusaurus/static/img/ziti-overview.svg)
 
 ## Quick Reference
-* [Main Documentation Site](https://openziti.github.io/ziti/overview.html)
+* [Main Documentation Site](https://docs.openziti.io)
 * [Main Repo](https://github.com/openziti/ziti/)
 
