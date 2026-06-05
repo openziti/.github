@@ -4,7 +4,7 @@
 
 OpenZiti is a platform for building secure, zero-trust connectivity into any application or network.  Every connection is authenticated with cryptographic identity, authorized by policy, and encrypted end-to-end.
 
-In traditional networking, services are exposed, and security is layered around them. OpenZiti inverts this: **services are invisible by default, and network paths exist only once an identity is fully authorized**, whether that identity belongs to a user, service, device, or workload.  Projects like [openziti/mcp-gateway](https://github.com/openziti/mcp-gateway), [openziti/llm-gateway](https://github.com/openziti/llm-gateway, and [openziti/agora](https://github.com/openziti/agora) show what this looks like in practice for securing AI agent infrastructure.
+In traditional networking, services are exposed, and security is layered around them. OpenZiti inverts this: **services are invisible by default, and network paths exist only once an identity is fully authorized**, whether that identity belongs to a user, service, device, or workload.  Projects like [openziti/mcp-gateway](https://github.com/openziti/mcp-gateway), [openziti/llm-gateway](https://github.com/openziti/llm-gateway), and [openziti/agora](https://github.com/openziti/agora) show what this looks like in practice for securing AI agent infrastructure.
 
 OpenZiti is fully open-source under the [Apache 2.0](https://github.com/openziti/ziti/blob/main/LICENSE) license. All core networking functionality is in the open-source project. [NetFoundry](https://netfoundry.io), which created and sponsors OpenZiti, offers a [managed service](https://netfoundry.io/docs/openziti/#deploy_an_overlay) built on the same platform.
 
