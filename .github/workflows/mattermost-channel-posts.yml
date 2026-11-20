@@ -1,0 +1,46 @@
+name: Post Event to Mattermost
+on:
+  workflow_call:
+    secrets:
+      ZITI_MATTERMOST_IDENTITY:
+        required: true
+      # the incoming webhook is locked to one channel, so a repo posting to two channels calls this workflow twice
+      webhookUrl:
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  mattermost_webhook:
+    runs-on: ubuntu-latest
+    name: Ziti Mattermost Action - Py
+    # a timed-out job is reported as success too, for the same reason as the step's continue-on-error
+    continue-on-error: true
+    # the webhook is dialed over the ziti overlay with no client-side connect timeout, so cap the job instead
+    timeout-minutes: 5
+    env:
+      # filter out testing fork runs where secrets are undefined
+      HAVE_SECRETS: ${{ secrets.webhookUrl != '' && secrets.ZITI_MATTERMOST_IDENTITY != '' }}
+      # filter out uninteresting events, and a branch create, which the push for the same branch already reports
+      IS_INTERESTING: ${{ (github.event_name != 'pull_request_review' || (github.event_name == 'pull_request_review' && github.event.review.state == 'approved')) && !(github.event_name == 'create' && github.event.ref_type == 'branch') }}
+    steps:
+    - uses: openziti/ziti-mattermost-action-py@main
+      if: ${{ env.HAVE_SECRETS == 'true' && env.IS_INTERESTING == 'true' }}
+      # a chat notification must never fail the caller's checks, so workflows that gate on the checks for a revision
+      # aren't blocked when the Mattermost webhook is unreachable
+      continue-on-error: true
+      with:
+        # Identity JSON or Base64 encoded JSON
+        zitiId: ${{ secrets.ZITI_MATTERMOST_IDENTITY }}
+
+        # http://<ziti service intercept address>/hooks/<incoming webhook secret token>
+        # http://mattermost.ziti.internal:80/hooks/asdflkhjasdflkhjasdflkhjasdflkhj
+        webhookUrl: ${{ secrets.webhookUrl }}
+
+        # Event JSON or Base64 encoded JSON
+        eventJson: ${{ toJson(github.event) }}
+
+        # Sender username to spoof in Mattermost
+        senderUsername: GitHubZ
+
