@@ -3,6 +3,10 @@ on:
   create:
   delete:
   issues:
+    types:
+      - opened
+      - closed
+      - reopened
   issue_comment:
   pull_request_review:
     types:
@@ -12,12 +16,19 @@ on:
     types:
       - opened
       - reopened
+      - ready_for_review
+      - closed
   push:
+    branches:
+      - '**'
   fork:
   release:
     types:
       - released
   workflow_dispatch:
+  watch:
+    types:
+      - started
 
 permissions:
   contents: read
@@ -26,20 +37,19 @@ jobs:
   mattermost_webhook:
     runs-on: ubuntu-latest
     name: Ziti Mattermost Action - Py
-    env:
-      # filter out testing fork runs where secrets are undefined
-      HAVE_SECRETS: ${{ secrets.ZHOOK_URL_DEV_NOTIFICATIONS != '' && secrets.ZITI_MATTERMOST_IDENTITY != '' }}
-      # filter out uninteresting events
-      IS_INTERESTING: ${{ github.event_name != 'pull_request_review' || (github.event_name == 'pull_request_review' && github.event.review.state == 'approved') }}
+    # a chat notification must never fail the caller's checks
+    continue-on-error: true
+    # the webhook is dialed over the ziti overlay, so cap the job in case it hangs
+    timeout-minutes: 5
     steps:
     - uses: openziti/ziti-mattermost-action-py@main
-      if: ${{ env.HAVE_SECRETS == 'true' && env.IS_INTERESTING == 'true' }}
       with:
         # Identity JSON or Base64 encoded JSON
         zitiId: ${{ secrets.ZITI_MATTERMOST_IDENTITY }}
 
         # http://<ziti service intercept address>/hooks/<incoming webhook secret token>
         # http://mattermost.ziti.internal:80/hooks/asdflkhjasdflkhjasdflkhjasdflkhj
+        # one URL per line to post to more than one channel
         webhookUrl: ${{ secrets.ZHOOK_URL_DEV_NOTIFICATIONS }}
 
         # Event JSON or Base64 encoded JSON
